@@ -1,11 +1,11 @@
 import React from 'react'
-import CardWidget from '../CartWidget/CardWidget'
+import CartWidget from '../CartWidget/CartWidget'
 
 const NavBar = ({valor}) => {
     return (
         <div>
             <h1>Urban Mode</h1>
-            <CardWidget valor={valor}/>
+            <CartWidget valor={valor}/>
         </div>
     )
 }
