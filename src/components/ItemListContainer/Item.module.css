@@ -3,3 +3,9 @@
     border-radius: 15px;
     margin: 10px;
 }
+
+.detailsButton{
+    margin-bottom: 10px;
+    background-color: rgba(0, 149, 255, 0.886);
+    color: white;
+}

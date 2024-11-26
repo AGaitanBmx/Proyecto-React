@@ -6,6 +6,7 @@ import Button from './components/Button/Button'
 import HomeContainer from './components/HomeContainer/HomeContainer'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import ContactContainer from './components/ContactContainer/ContactContainer'
+import ItemDetail from './components/ItemListContainer/ItemDetail'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route exact path='/' element={<HomeContainer/>}/>
         <Route exact path='/products' element={<ItemListContainer/>}/>
         <Route exact path='/contact' element={<ContactContainer/>}/>
+        <Route exact path='/product/:id' element={<ItemDetail/>}/>
       </Routes>
     </BrowserRouter>
     </>
