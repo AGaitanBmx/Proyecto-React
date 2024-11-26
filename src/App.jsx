@@ -1,10 +1,11 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import NavBar from './components/NavBar/NavBar'
 import Button from './components/Button/Button'
+import HomeContainer from './components/HomeContainer/HomeContainer'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import ContactContainer from './components/ContactContainer/ContactContainer'
 
 function App() {
 
@@ -12,8 +13,14 @@ function App() {
 
   return (
     <>
+    <BrowserRouter>
       <NavBar valor={valor}/>
-      <ItemListContainer mensaje="Articulos en el carrito" fn={setValor}/>
+      <Routes>
+        <Route exact path='/' element={<HomeContainer/>}/>
+        <Route exact path='/products' element={<ItemListContainer/>}/>
+        <Route exact path='/contact' element={<ContactContainer/>}/>
+      </Routes>
+    </BrowserRouter>
     </>
   )
 }

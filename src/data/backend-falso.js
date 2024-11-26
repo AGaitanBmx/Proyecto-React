@@ -1,23 +1,27 @@
 const base_de_datos = [
     {
+        id:1,
         nombre: "Remera Zimith",
         talle: "XL",
         precio: 10000,
         img:"https://etreo.com.ar/wp-content/uploads/2023/10/rave-1-1.png",
     },
     {
+        id:2,
         nombre: "Short CaptainFin",
         talle: "L",
         precio: 12000,
         img:"https://outertribe.net/cdn/shop/products/DSC00068_2048x.jpg?v=1575448638",
     },
     {
+        id:3,
         nombre: "Campera Commnty",
         talle: "S",
         precio: 11000,
         img:"https://acdn.mitiendanube.com/stores/099/188/products/mmp_52971-bbab5cd7bb763a5f7316835634450310-1024-1024.webp",
     },
     {
+        id:4,
         nombre: "Puluiso Zimith",
         talle: "XXL",
         precio: 9000,
@@ -30,7 +34,7 @@ export const getProducts = () => {
         setTimeout(() => {
             resolve(base_de_datos);
             reject("error")
-        },3000)
+        },2000)
     });
 }
 
@@ -39,6 +43,6 @@ export const getProductsByTalle = (talle) => {
         setTimeout(() => {
             resolve(base_de_datos.filter(e => e.talle === talle));
             reject("error")
-        },3000)
+        },2000)
     });
 }

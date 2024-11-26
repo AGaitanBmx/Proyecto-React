@@ -41,15 +41,8 @@ const changeTalle = (talle)=> {
                 <Button fn={()=> changeTalle("L")} text="L"/>
                 <Button fn={()=> changeTalle("M")} text="M"/>
                 <Button fn={()=> changeTalle("S")} text="S"/>
-                <Button fn={()=> setCargando(true)} text="cargar"/>
             </div>
-            {
-                cargando
-                ? 
-                <h1>cargando...</h1>
-                :
             <ItemList products={products}/>
-            }
         </div>
         </>
     )
