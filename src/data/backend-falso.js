@@ -58,3 +58,16 @@ export const getProductsByTalle = (talle) => {
         },2000)
     });
 }
+
+export const getProduct = (id) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            const product = base_de_datos.find((prod) => prod.id == id);
+            if (product) {
+                resolve(product);
+            } else {
+                reject("Producto no encontrado");
+            }
+        }, 2000);
+    });
+};
