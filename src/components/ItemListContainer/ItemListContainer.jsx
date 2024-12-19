@@ -31,10 +31,6 @@ const changeTalle = (talle)=> {
     return (
         <>
         <div>
-        <div>{mensaje}</div>
-        <Button fn={fn} text="agregar al carrito" color="green"/>
-        </div>
-        <div>
             <div>
                 <Button fn={()=> changeTalle("XXL")} text="XXL"/>
                 <Button fn={()=> changeTalle("XL")} text="XL"/>

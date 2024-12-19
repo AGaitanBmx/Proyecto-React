@@ -1,12 +1,16 @@
 import React from 'react'
+import { useContext } from 'react';
 import { BsCart4 } from "react-icons/bs";
+import { CartContext } from '../../context/cartContext';
+const CartWidget = () => {
+    const [cart] = useContext(CartContext);
 
-
-const CartWidget = ({valor}) => {
     return (
         <div>
-            <BsCart4 />
-            <span>{valor}</span>
+            <button>
+                <BsCart4 />
+                <span>{cart.length}</span>
+            </button>
         </div>
     )
 }
