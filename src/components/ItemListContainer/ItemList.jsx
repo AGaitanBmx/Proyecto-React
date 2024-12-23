@@ -3,16 +3,18 @@ import Item from './Item'
 import { ProductsContext } from '../../context/ProductContext'
 
 const ItemList = () => {
-    const [products, setProducts]=useContext(ProductsContext);
+    const [products, setProducts, loading]=useContext(ProductsContext);
 
     return (
-        <div>
-            { products.map((prod) => {
-                return(
-                <Item key={prod.id} elemento={prod}/>
-                )
-            })}
-        </div>
+        <>
+        {loading ? <p>Cargando...</p> :             <div>
+                { products.map((prod) => {
+                    return(
+                    <Item key={prod.id} elemento={prod}/>
+                    )
+                })}
+            </div>}
+        </>
     )
 }
 
