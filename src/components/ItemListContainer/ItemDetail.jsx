@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getProduct } from '../../data/backend-falso';
 import styles from './ItemDetail.module.css';
 
 export default function ItemDetail() {
     const { id } = useParams();
-    const [product, setProduct] = useState(null);  // Inicializa como null para manejar la carga
+    const [product, setProduct] = useState(null);
 
     useEffect(() => {
         getProduct(id)
             .then((data) => setProduct(data))
             .catch((error) => console.error(error));
-    }, [id]);  // Agrega 'id' a las dependencias
+    }, [id]); 
 
     if (!product) {
-        return <p>Cargando...</p>;  // Muestra un mensaje mientras se carga el producto
+        return <p>Cargando...</p>;
     }
 
     return (
