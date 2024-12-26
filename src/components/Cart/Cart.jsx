@@ -1,12 +1,18 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { CartContext } from '../../context/CartContext';
+import CheckoutForm from './CheckoutForm'; // Asegúrate de que este sea el path correcto
 
 const Cart = () => {
     const [cart, , , removeItem, getTotalPrice] = useContext(CartContext);
+    const [showCheckout, setShowCheckout] = useState(false);
 
     useEffect(() => {
         console.log('Elementos en el carrito:', cart);
     }, [cart]);
+
+    const handleCheckout = () => {
+        setShowCheckout(true);
+    };
 
     return (
         <div>
@@ -30,8 +36,19 @@ const Cart = () => {
                         ))}
                     </ul>
                     <h2>Total a pagar: ${getTotalPrice()}</h2>
-                    <button>Confirmar compra</button>
+                    {!showCheckout && (
+                        <button onClick={handleCheckout}>Confirmar compra</button>
+                    )}
                 </>
+            )}
+            {showCheckout && (
+                <CheckoutForm 
+                    cart={cart} 
+                    total={getTotalPrice()} 
+                    onSuccess={() => {
+                        setShowCheckout(false);
+                    }}
+                />
             )}
         </div>
     );
