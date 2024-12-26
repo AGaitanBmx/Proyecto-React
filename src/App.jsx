@@ -2,10 +2,9 @@ import { useState } from 'react'
 import './App.css'
 import ItemListContainer from './components/ItemListContainer/ItemListContainer'
 import NavBar from './components/NavBar/NavBar'
-import Button from './components/Button/Button'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import ContactContainer from './components/ContactContainer/ContactContainer'
-import ItemDetail from './components/ItemListContainer/ItemDetail'
+import ItemDetail from './components/ItemDetail/ItemDetail'
 
 function App() {
 

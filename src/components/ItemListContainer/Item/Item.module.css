@@ -4,6 +4,17 @@
     margin: 10px;
 }
 
+.itemImg{
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.itemImg:hover{
+    transform: rotateX(10deg) rotateY(10deg);
+}
+
 .detailsButton{
     margin-bottom: 10px;
     background-color: rgba(0, 149, 255, 0.886);

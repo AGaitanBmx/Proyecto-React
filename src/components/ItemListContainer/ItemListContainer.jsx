@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import ItemList from './ItemList';
+import ItemList from './itemList/ItemList';
 import { ProductsContext } from '../../context/ProductContext';
 
 const ItemListContainer = ({ mensaje }) => {

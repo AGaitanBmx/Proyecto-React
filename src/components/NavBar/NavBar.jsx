@@ -7,9 +7,10 @@ const NavBar = ({valor}) => {
     return (
         <>
             <nav className={styles.navBar}>
-                <h3>Urban mode</h3>
                 <Link to='/'><img className={styles.logoHome} src='../../public/casa.png'/></Link>
-                <Link to='/products'><button className={styles.navButton}>productos</button></Link>
+                <Link to='/products'><button className={styles.navButton}>Hombres</button></Link>
+                <Link to='/products'><button className={styles.navButton}>Mujeres</button></Link>
+                <Link to='/products'><button className={styles.navButton}>Niños</button></Link>
                 <Link to='/contact'><button className={styles.navButton}>contacto</button></Link>
                 <div className={styles.cartContainer}>
                     <CartWidget valor={valor}/>

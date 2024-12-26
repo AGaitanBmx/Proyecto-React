@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
-import Item from './Item'
-import { ProductsContext } from '../../context/ProductContext'
+import Item from '../Item/Item'
+import { ProductsContext } from '../../../context/ProductContext'
 
 const ItemList = () => {
     const [products, setProducts, loading]=useContext(ProductsContext);

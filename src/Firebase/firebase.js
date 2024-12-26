@@ -18,4 +18,12 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
-
+export const getSingleProduct = async (id) => {
+  const docRef = doc(db, "productos", id);
+  const docSnap = await getDoc(docRef);
+  if (docSnap.exists()) {
+    return { id: docSnap.id, ...docSnap.data() };
+  } else {
+    throw new Error("No such document!");
+  }
+};
