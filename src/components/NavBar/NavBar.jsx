@@ -11,9 +11,9 @@ const NavBar = ({ valor }) => {
                 <Link to='/categoria/hombre'><button className={styles.navButton}>Hombres</button></Link>
                 <Link to='/categoria/mujer'><button className={styles.navButton}>Mujeres</button></Link>
                 <Link to='/categoria/niño'><button className={styles.navButton}>Niños</button></Link>
-                <div className={styles.cartContainer}>
+                <Link to='/cart'><div className={styles.cartContainer}>
                     <CartWidget valor={valor} />
-                </div>
+                </div></Link>
             </nav>
         </>
     );

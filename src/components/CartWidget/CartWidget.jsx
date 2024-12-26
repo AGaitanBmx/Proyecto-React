@@ -1,7 +1,7 @@
 import React from 'react'
 import { useContext } from 'react';
 import { BsCart4 } from "react-icons/bs";
-import { CartContext } from '../../context/cartContext';
+import { CartContext } from '../../context/CartContext';
 const CartWidget = () => {
     const [cart] = useContext(CartContext);
 
@@ -18,7 +18,6 @@ const CartWidget = () => {
                     <BsCart4 />
                 </button>
             </div> }
-
         </>
     )
 }
