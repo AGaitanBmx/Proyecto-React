@@ -2,109 +2,93 @@ import React, { useState, useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../Firebase/firebase';
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = () => {
-    const [cart, , , , getTotalPrice] = useContext(CartContext);
-
-    const [formData, setFormData] = useState({
-        nombre: '',
-        celular: '',
-        direccion: '',
-        correo: ''
-    });
+    const [name, setName] = useState("");
+    const [phone, setPhone] = useState("");
+    const [address, setAddress] = useState("");
+    const [email, setEmail] = useState("");
     const [orderId, setOrderId] = useState(null);
-    const [loading, setLoading] = useState(false);
+    const [cart, , , , getTotalPrice, clearCart] = useContext(CartContext);
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
-    };
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setLoading(true);
+        const total = getTotalPrice();
 
         const order = {
-            buyer: formData,
-            items: cart.map((item) => ({
-                id: item.id,
-                nombre: item.nombre,
-                cantidad: item.cantidad,
-                precio: item.precio
-            })),
-            total: getTotalPrice(),
-            date: new Date()
+            buyer: {
+                name,
+                phone,
+                address,
+                email,
+            },
+            items: cart,
+            total,
+            date: new Date().toISOString(),
         };
 
         try {
-            const docRef = await addDoc(collection(db, 'ordenes'), order);
+            const docRef = await addDoc(collection(db, "ordenes"), order);
             setOrderId(docRef.id);
+            clearCart(); // Limpiar el carrito después de completar la compra
         } catch (error) {
-            console.error('Error al generar la orden:', error);
-        } finally {
-            setLoading(false);
+            console.error("Error al crear la orden:", error);
         }
     };
 
-    if (loading) {
-        return <p>Procesando tu orden...</p>;
-    }
-
-    if (orderId) {
-        return (
-            <div>
-                <h2>¡Orden completada!</h2>
-                <p>Gracias por tu compra. Tu número de orden es: <strong>{orderId}</strong></p>
-            </div>
-        );
-    }
-
     return (
         <div>
-            <h2>Finalizar Compra</h2>
-            <form onSubmit={handleSubmit}>
+            {orderId ? (
                 <div>
-                    <label>Nombre:</label>
-                    <input
-                        type="text"
-                        name="nombre"
-                        value={formData.nombre}
-                        onChange={handleChange}
-                        required
-                    />
+                    <h2>¡Compra finalizada!</h2>
+                    <p>Tu ID de compra es: <strong>{orderId}</strong></p>
+                    <button onClick={() => navigate("/")}>Volver al inicio</button>
                 </div>
-                <div>
-                    <label>Celular:</label>
-                    <input
-                        type="tel"
-                        name="celular"
-                        value={formData.celular}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Dirección:</label>
-                    <input
-                        type="text"
-                        name="direccion"
-                        value={formData.direccion}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Correo Electrónico:</label>
-                    <input
-                        type="email"
-                        name="correo"
-                        value={formData.correo}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <button type="submit">Confirmar Compra</button>
-            </form>
+            ) : (
+                <form onSubmit={handleSubmit}>
+                    <h2>Completa tus datos</h2>
+                    <label>
+                        Nombre:
+                        <input
+                            type="text"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label>
+                        Teléfono:
+                        <input
+                            type="tel"
+                            value={phone}
+                            onChange={(e) => setPhone(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label>
+                        Dirección:
+                        <input
+                            type="text"
+                            value={address}
+                            onChange={(e) => setAddress(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <label>
+                        Correo Electrónico:
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            required
+                        />
+                    </label>
+                    <button type="submit">Confirmar compra</button>
+                </form>
+            )}
         </div>
     );
 };

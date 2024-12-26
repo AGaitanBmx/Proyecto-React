@@ -1,3 +1,7 @@
+En este repositorio tengo un ecommerce creado para el proyecto final del curso de React.
+utiliznaod hocks de react, context, routing, y firebase como base de datos, es un ecommerce simple para venta de ropa con la finalidad de ser escalable.
+
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

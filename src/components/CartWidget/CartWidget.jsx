@@ -7,17 +7,12 @@ const CartWidget = () => {
 
     return (
         <>
-        {cart.length > 0 ? <div>
+            <div>
                 <button>
                     <BsCart4 />
                     <span>{cart.length}</span>
                 </button>
-            </div> : <div>
-                <button>
-                    <span>carrito vacio</span>
-                    <BsCart4 />
-                </button>
-            </div> }
+            </div>
         </>
     )
 }
