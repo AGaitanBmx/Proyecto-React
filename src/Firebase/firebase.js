@@ -41,3 +41,13 @@ export const getProductsByCategory = async (categoria) => {
   console.log(`Products fetched for category ${categoria}:`, products);
   return products;
 };
+
+export const sendOrder = async (order) => {
+  try {
+      await addDoc(collection(db, 'ordenes'), order);
+      return docRef.id;
+  } catch (error) {
+      console.error('Error al enviar el pedido: ', error);
+      throw error;
+  }
+};
