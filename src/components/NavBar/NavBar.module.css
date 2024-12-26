@@ -1,20 +1,47 @@
-.navBar{
+.navBar {
     display: flex;
-    align-items: space-around;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #00425c;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.logoHome{
-    width: 50px;
-    margin: 10px;
+.leftContainer {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
-.navButton{
-    background-color: rgb(162, 6, 139);
+.rightContainer {
+    display: flex;
+    align-items: center;
+}
+
+.logoHome {
+    height: 50px;
+}
+
+.logoUrbanMode {
+    height: 70px;
+}
+
+.navButton {
+    background-color: #007bff;
     color: white;
-    width: 120px;
-    margin: 10px;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
 }
 
-.cartContainer{
-    margin: 22px;
+.navButton:hover {
+    background-color: #0056b3;
+}
+
+.cartContainer {
+    display: flex;
+    align-items: center;
 }

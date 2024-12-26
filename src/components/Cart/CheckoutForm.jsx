@@ -3,6 +3,7 @@ import { CartContext } from '../../context/CartContext';
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../../Firebase/firebase';
 import { useNavigate } from "react-router-dom";
+import styles from './CheckoutForm.module.css';
 
 const CheckoutForm = () => {
     const [name, setName] = useState("");
@@ -31,63 +32,69 @@ const CheckoutForm = () => {
         };
 
         try {
-            const docRef = await addDoc(collection(db, "ordenes"), order);
+            const docRef = await addDoc(collection(db, "orders"), order);
             setOrderId(docRef.id);
-            clearCart(); // Limpiar el carrito después de completar la compra
+            clearCart();
         } catch (error) {
-            console.error("Error al crear la orden:", error);
+            console.error("Error adding document: ", error);
         }
     };
 
+    const handleGoHome = () => {
+        navigate('/');
+    };
+
     return (
-        <div>
-            {orderId ? (
-                <div>
-                    <h2>¡Compra finalizada!</h2>
-                    <p>Tu ID de compra es: <strong>{orderId}</strong></p>
-                    <button onClick={() => navigate("/")}>Volver al inicio</button>
+        <div className={styles.checkoutFormContainer}>
+            <h2>Formulario de Pago</h2>
+            <form onSubmit={handleSubmit} className={styles.form}>
+                <div className={styles.formGroup}>
+                    <label htmlFor="name">Nombre</label>
+                    <input
+                        type="text"
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        required
+                    />
                 </div>
-            ) : (
-                <form onSubmit={handleSubmit}>
-                    <h2>Completa tus datos</h2>
-                    <label>
-                        Nombre:
-                        <input
-                            type="text"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required
-                        />
-                    </label>
-                    <label>
-                        Teléfono:
-                        <input
-                            type="tel"
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
-                            required
-                        />
-                    </label>
-                    <label>
-                        Dirección:
-                        <input
-                            type="text"
-                            value={address}
-                            onChange={(e) => setAddress(e.target.value)}
-                            required
-                        />
-                    </label>
-                    <label>
-                        Correo Electrónico:
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                        />
-                    </label>
-                    <button type="submit">Confirmar compra</button>
-                </form>
+                <div className={styles.formGroup}>
+                    <label htmlFor="phone">Teléfono</label>
+                    <input
+                        type="tel"
+                        id="phone"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className={styles.formGroup}>
+                    <label htmlFor="address">Dirección</label>
+                    <input
+                        type="text"
+                        id="address"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        required
+                    />
+                </div>
+                <div className={styles.formGroup}>
+                    <label htmlFor="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                    />
+                </div>
+                <button type="submit" className={styles.submitButton}>Enviar Pedido</button>
+            </form>
+            {orderId && (
+                <div className={styles.orderConfirmation}>
+                    <p>Gracias por tu compra. Tu número de orden es: {orderId}</p>
+                    <button onClick={handleGoHome} className={styles.homeButton}>Ir a la página de inicio</button>
+                </div>
             )}
         </div>
     );

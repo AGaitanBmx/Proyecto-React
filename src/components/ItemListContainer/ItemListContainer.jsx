@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import ItemList from './ItemList/ItemList';
 import { getProductsByCategory } from '../../Firebase/firebase';
+import styles from './ItemListContainer.module.css';
 
 const ItemListContainer = ({ mensaje }) => {
     const { category } = useParams();
@@ -38,7 +39,7 @@ const ItemListContainer = ({ mensaje }) => {
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             <h1>{mensaje}</h1>
             <ItemList products={products} />
         </div>

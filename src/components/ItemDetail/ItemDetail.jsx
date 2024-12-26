@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { getSingleProduct } from '../../Firebase/firebase';
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
+import styles from './ItemDetail.module.css';
 
 const ItemDetail = () => {
     const { id } = useParams();
@@ -43,14 +44,14 @@ const ItemDetail = () => {
     }
 
     return (
-        <div>
+        <div className={styles.itemDetail}>
             <h1>Detalles del producto</h1>
             <h2>{product.nombre}</h2>
-            <img src={product.img} alt={product.nombre} />
-            <p>{product.descripcion}</p>
-            <p>Talle/s: {product.talle}</p>
-            <p>Precio: ${product.precio}</p>
-            <p>Stock disponible: {product.stock}</p>
+            <img className={styles.itemImg} src={product.img} alt={product.nombre} />
+            <p className={styles.itemDetailText}>{product.descripcion}</p>
+            <p className={styles.itemDetailText}>Talle/s: {product.talle}</p>
+            <p className={styles.itemDetailText}>Precio: ${product.precio}</p>
+            <p className={styles.itemDetailText}>Stock disponible: {product.stock}</p>
             
             <div>
                 <input

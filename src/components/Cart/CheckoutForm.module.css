@@ -1,0 +1,79 @@
+.checkoutFormContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #6a1e1e;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.formGroup {
+    margin-bottom: 15px;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.formGroup input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.submitButton {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.submitButton:hover {
+    background-color: #0056b3;
+}
+
+.orderConfirmation {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.homeButton {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 10px;
+}
+
+.homeButton:hover {
+    background-color: #218838;
+}
+
+p {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #333;
+}
