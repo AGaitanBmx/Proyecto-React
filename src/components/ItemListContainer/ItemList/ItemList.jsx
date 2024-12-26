@@ -1,21 +1,16 @@
-import React, { useContext } from 'react'
-import Item from '../Item/Item'
-import { ProductsContext } from '../../../context/ProductContext'
+import React from 'react';
+import Item from '../Item/Item';
 
-const ItemList = () => {
-    const [products, setProducts, loading]=useContext(ProductsContext);
-
+const ItemList = ({ products }) => {
     return (
-        <>
-        {loading ? <p>Cargando...</p> :             <div>
-                { products.map((prod) => {
-                    return(
-                    <Item key={prod.id} elemento={prod}/>
-                    )
-                })}
-            </div>}
-        </>
-    )
-}
+    <>
+        <div>
+            {products.map(product => (
+                <Item key={product.id} elemento={product} />
+            ))}
+        </div>
+    </>
+    );
+};
 
-export default ItemList
+export default ItemList;

@@ -27,3 +27,17 @@ export const getSingleProduct = async (id) => {
     throw new Error("No such document!");
   }
 };
+
+export const getProductsByCategory = async (categoria) => {
+  console.log(`Fetching products for category: ${categoria}`);
+  let q;
+  if (categoria) {
+    q = query(collection(db, "productos"), where("categoria", "==", categoria));
+  } else {
+    q = query(collection(db, "productos"));
+  }
+  const querySnapshot = await getDocs(q);
+  const products = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  console.log(`Products fetched for category ${categoria}:`, products);
+  return products;
+};
